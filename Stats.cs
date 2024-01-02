@@ -18,20 +18,22 @@ public class Stats : MonoBehaviour
     [SerializeField]
     Text BestTime5;
     public GameObject StatsCanvas;
-    public GameObject BlurScreen;
-    //private bool isBlurred = false;
     private bool isToggled = false;
+
+
+    [SerializeField]
+    Text BestTime;
+    public float level;
 
     void Start()
     {
-        CheckStats();
     }
 
     void Update()
     {
-       // Debug.Log(PlayerPrefs.GetFloat("BestTimeLevel1"));
+        BestTime.text = "Best Time: " + PlayerPrefs.GetFloat("BestTimeLevel" + level).ToString("0.00");//sets best time text to current level best time to 2 dp
     }
-    public void CheckStats()
+    public void CheckStats()//not used anymore
     {
         if (SceneManager.GetActiveScene().name == "Level1")
         {
@@ -95,7 +97,6 @@ public class Stats : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         StatsCanvas.SetActive(false);
-        BlurScreen.SetActive(false);
         isToggled = !isToggled;
     }
     public void ToggleResetStats()
@@ -103,14 +104,21 @@ public class Stats : MonoBehaviour
         if (isToggled == true)
         {
             StatsCanvas.SetActive(false);
-            BlurScreen.SetActive(false);
         }
         else
         {
             StatsCanvas.SetActive(true);
-            BlurScreen.SetActive(true);
         }
         isToggled = !isToggled;
-       // isBlurred = !isBlurred;
+    }
+
+    public void TurnOffReset()
+    {
+        StatsCanvas.SetActive(false);
+    }
+
+    public void TurnOnReset()
+    {
+        StatsCanvas.SetActive(true);
     }
 }

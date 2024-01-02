@@ -12,8 +12,13 @@ public class StartFalling : MonoBehaviour
     {
         if (playerRb.position.y >= thresholdY)
         {
-            fallingObjectRb.gravityScale = 1;
+            Fall();
         }
         
+    }
+
+    public void Fall()
+    {
+        fallingObjectRb.gravityScale = 1;
     }
 }

@@ -38,35 +38,41 @@ public class Movement : MonoBehaviour
         refer = FindObjectOfType<CheckPlayerCollision>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = jumpSound; 
+        audioSource.clip = jumpSound;
+
     }
 
 
     private void Update()
     {
+        
         int CurrentLevel = PlayerPrefs.GetInt("CurrentLevel");
         float currentHeight = transform.position.y;
         if (currentHeight > finishHeight)
         {
-            ToggleFinished();
             timeKeeper.StopTimer();
 
             string finishTimeKey = "FinishTime" + CurrentLevel.ToString();
-            string bestTimeKey = "BestTime" + SceneManager.GetActiveScene().name;
+            string bestTimeKey = "BestTime" + SceneManager.GetActiveScene().name;// = BestTime1
 
             PlayerPrefs.SetFloat(finishTimeKey, timeKeeper.CurrentTime);
 
             if (!PlayerPrefs.HasKey(bestTimeKey))
             {
                 PlayerPrefs.SetFloat(bestTimeKey, timeKeeper.CurrentTime);
+               // Debug.Log("New Best Time");
             }
             else
             {
                 if (PlayerPrefs.GetFloat(finishTimeKey) < PlayerPrefs.GetFloat(bestTimeKey))
                 {
                     PlayerPrefs.SetFloat(bestTimeKey, PlayerPrefs.GetFloat(finishTimeKey));
+                  //  Debug.Log("New Best Time");
                 }
             }
+            
+            //stats.CheckStats();
+            ToggleFinished();
         }
         Score.text = "Progress: " + currentHeight.ToString("0") + "%";
         AttemptNumber.text = "Attempt #" + PlayerPrefs.GetInt("Attempts").ToString("0");
@@ -147,5 +153,12 @@ public class Movement : MonoBehaviour
         finishMenu.SetActive(true);
         blurScreen.SetActive(true);
         PlayerPrefs.SetInt("Attempts", 1);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        Debug.Log("Pause");
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
     }
 }
