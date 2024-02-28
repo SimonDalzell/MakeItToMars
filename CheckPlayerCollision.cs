@@ -7,13 +7,10 @@ using UnityEngine.UI;
 
 public class CheckPlayerCollision : MonoBehaviour
 {
-
-    //[SerializeField]
-    //Text AttemptNumber;
     public int attempts = 1;
+    private FreePlayDeath freePlayDeath;
     public void Start()
     {
-        //AttemptNumber.text = "Attempts: " + PlayerPrefs.GetInt("Attempts").ToString("0.00");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,8 +20,8 @@ public class CheckPlayerCollision : MonoBehaviour
             attempts = PlayerPrefs.GetInt("Attempts", 1) + 1;
             PlayerPrefs.SetInt("Attempts", attempts);
             PlayerPrefs.Save();
+            Handheld.Vibrate();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-           // Debug.Log(PlayerPrefs.GetInt("Attempts"));
         }
     }
 }

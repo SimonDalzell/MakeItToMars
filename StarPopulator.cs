@@ -14,20 +14,16 @@ public class StarPopulator : MonoBehaviour
     {
         float playerTime = PlayerPrefs.GetFloat("BestTimeLevel" + level);
 
-        // Check if playerTime is 0 first
         if (playerTime == 0f)
         {
-            // Set current images to their original sprites
             for (int i = 0; i < currentImages.Length; i++)
             {
                 Image imageToChange = currentImages[i];
-                //Sprite originalSprite = imageToChange.sprite; // Assuming the original sprite is the one currently set
                 ImageToImage(imageToChange, imageToChange);
             }
         }
         else
         {
-            // Check other conditions
             if (playerTime < OneStar)
             {
                 Image imageToChange = currentImages[0];
@@ -58,6 +54,5 @@ public class StarPopulator : MonoBehaviour
 
     private void Update()
     {
-       // Debug.Log(PlayerPrefs.GetFloat("BestTimeLevel" + level));
     }
 }

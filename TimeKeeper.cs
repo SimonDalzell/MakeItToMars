@@ -17,17 +17,14 @@ public class TimeKeeper : MonoBehaviour
 
     private void Start()
     {
-        // Start the timer when the scene starts
         StartTimer();
     }
 
     private void Update()
     {
-        // Update the timer if it is running
         if (isTimerRunning)
         {
             currentTime = Time.time - startTime;
-           // Debug.Log("Timer: " + currentTime.ToString("F2"));
         }
 
         timerText.text = "Time: " + currentTime.ToString("0.00");

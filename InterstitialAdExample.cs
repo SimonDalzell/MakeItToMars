@@ -1,18 +1,51 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
 
 public class InterstitialAdExample : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    [SerializeField] string _androidAdUnitId = "Interstitial_Android";
-    [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
+    //[SerializeField] string _androidAdUnitId = "5552263";
+    [SerializeField] string _iOsAdUnitId = "5552263";
     string _adUnitId;
+
 
     void Awake()
     {
         // Get the Ad Unit ID for the current platform:
-        _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
-            ? _iOsAdUnitId
-            : _androidAdUnitId;
+        _adUnitId = _iOsAdUnitId;
+
+            //(Application.platform == RuntimePlatform.IPhonePlayer)
+            //? _androidAdUnitId
+            //: _iOsAdUnitId;
+
+
+    }
+
+    void Start()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+ 
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        int Attempts = PlayerPrefs.GetInt("Attempts");
+        if (Attempts % 10 == 0 && scene.name.StartsWith("Level") && !scene.name.Equals("Levels") && Attempts != 0)
+        {
+            Debug.Log("Show Ad");
+            ShowAd();
+        }     
     }
 
     // Load content to the Ad Unit:

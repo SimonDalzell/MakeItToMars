@@ -31,8 +31,10 @@ public class Stats : MonoBehaviour
 
     void Update()
     {
-        BestTime.text = "Best Time: " + PlayerPrefs.GetFloat("BestTimeLevel" + level).ToString("0.00");//sets best time text to current level best time to 2 dp
+        BestTime.text = "Best: " + PlayerPrefs.GetFloat("BestTimeLevel" + level).ToString("0.00");//sets best time text to current level best time to 2 dp
     }
+
+
     public void CheckStats()//not used anymore
     {
         if (SceneManager.GetActiveScene().name == "Level1")

@@ -18,13 +18,10 @@ public class ScrollRectBounds : MonoBehaviour
 
     void Update()
     {
-        // Get the current content position
         Vector3 contentPosition = contentRectTransform.localPosition;
 
-        // Restrict the X position within the min and max bounds
         contentPosition.y = Mathf.Clamp(contentPosition.y, minScrollX, maxScrollX);
 
-        // Update the content position
         contentRectTransform.localPosition = contentPosition;
     }
 }

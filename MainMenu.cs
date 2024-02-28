@@ -27,7 +27,6 @@ public class MainMenu : MonoBehaviour
     public void HomeButton()
     {
         SceneManager.LoadScene("MainMenu");
-        //Time.timeScale = 1f;
     }
         public void StatsButton()
     {

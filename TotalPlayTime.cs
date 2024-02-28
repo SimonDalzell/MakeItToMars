@@ -21,8 +21,8 @@ public class TotalPlayTime : MonoBehaviour
         int minutes = Mathf.FloorToInt((totalTimePlayed % 3600) / 60);
         int seconds = Mathf.FloorToInt(totalTimePlayed % 60);
         formattedTime = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
-        PlayTimeText.text = "Play Time: " + formattedTime;
-        BestHeight.text = "FreePlay Best Height: " + PlayerPrefs.GetFloat("BestHeight", 0f).ToString("0.00");
+        PlayTimeText.text = "Play Time: \n" + formattedTime;
+        BestHeight.text = "FreePlay Best Height: \n" + PlayerPrefs.GetFloat("BestHeight", 0f).ToString("0.00");
 
     }
 

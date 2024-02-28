@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     private bool isFinished;
     private Rigidbody2D rb;
     private CheckPlayerCollision refer;
-
+    private FreePlayDeath freePlayDeath;
 
 
     private void Start()
@@ -39,13 +39,13 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = jumpSound;
+        freePlayDeath = GetComponent<FreePlayDeath>();
 
     }
 
-
     private void Update()
     {
-        
+        //Debug.Log(freePlayDeath.IsDead());
         int CurrentLevel = PlayerPrefs.GetInt("CurrentLevel");
         float currentHeight = transform.position.y;
         if (currentHeight > finishHeight)
@@ -86,17 +86,17 @@ public class Movement : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began)
                 {
-                    if (touch.position.x < Screen.width / 2 && canJumpLeft)
+                    if (touch.position.x < Screen.width / 2 && canJumpLeft && touch.position.y < (Screen.height / 100) * 45)
                     {
                         Jump(-1f);
                         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                        canJumpLeft = false; 
+                        canJumpLeft = false;
                     }
-                    else if (touch.position.x > Screen.width / 2 && canJumpRight)
+                    else if (touch.position.x > Screen.width / 2 && canJumpRight && touch.position.y < (Screen.height / 100 ) * 45)
                     {
                         Jump(1f);
                         transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                        canJumpRight = false; 
+                        canJumpRight = false;
                     }
                 }
 
@@ -114,21 +114,23 @@ public class Movement : MonoBehaviour
             }
         }
             
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    Jump(-1f);
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Jump(-1f);
                     transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
                     audioSource.PlayOneShot(jumpSound);
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     Jump(1f);
                     transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
                     audioSource.PlayOneShot(jumpSound);
-                }
-            
-
+        
         }
+
+
+
+    }
 
     private void Jump(float direction)
     {
@@ -155,10 +157,15 @@ public class Movement : MonoBehaviour
         PlayerPrefs.SetInt("Attempts", 1);
     }
 
+
+
     private void OnApplicationPause(bool pause)
     {
-        Debug.Log("Pause");
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
+        if (freePlayDeath.IsDead() == false)
+        {
+            Debug.Log("Pause");
+            Time.timeScale = 0f;
+            pauseMenu.SetActive(true);
+        }      
     }
 }

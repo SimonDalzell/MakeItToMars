@@ -43,6 +43,10 @@ public class SongManager : MonoBehaviour
         {
             audioSource.Stop();
         }
+        else if (scene.name.Equals("Freeplay"))
+        {
+            audioSource.Stop();
+        }
         else if (scene.name.Equals("MainMenu"))
         {
             if (!audioSource.isPlaying)
