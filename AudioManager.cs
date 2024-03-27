@@ -3,9 +3,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private bool isMuted;
-
     private static AudioManager instance;
 
+    //Mutes all game sound
     void Awake()
     {
         if (instance == null)
@@ -19,13 +19,14 @@ public class AudioManager : MonoBehaviour
                 DontDestroyOnLoad(gameObject);
             }
         }
-
+        //Get users mute setting
         isMuted = PlayerPrefs.GetInt("IsMuted", 0) == 1;
         AudioListener.volume = isMuted ? 0 : 1;
     }
 
     public void ToggleMute()
     {
+        //If user has muted sound, unmute and vise versa
         if (isMuted)
         {
             isMuted = false;
@@ -45,6 +46,7 @@ public class AudioManager : MonoBehaviour
 
     void OnApplicationQuit()
     {
+        //save setting
         PlayerPrefs.Save();
     }
 }

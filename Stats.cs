@@ -18,6 +18,9 @@ public class Stats : MonoBehaviour
     [SerializeField]
     Text BestTime5;
     public GameObject StatsCanvas;
+    public GameObject Canvas;
+    public GameObject SettingsCanvas;
+
     private bool isToggled = false;
 
 
@@ -101,15 +104,20 @@ public class Stats : MonoBehaviour
         StatsCanvas.SetActive(false);
         isToggled = !isToggled;
     }
+
     public void ToggleResetStats()
     {
         if (isToggled == true)
         {
             StatsCanvas.SetActive(false);
+            SettingsCanvas.SetActive(false);
+            Canvas.SetActive(false);
         }
         else
         {
             StatsCanvas.SetActive(true);
+            SettingsCanvas.SetActive(true);
+            Canvas.SetActive(true);
         }
         isToggled = !isToggled;
     }

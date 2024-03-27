@@ -9,19 +9,19 @@ public class AttemptTimer : MonoBehaviour
 
     private void Start()
     {
+        //Get text component and start to fade for attempt number
         uiText = GetComponent<Text>();
-
         StartCoroutine(FadeAwayAfterDelay());
     }
 
     private IEnumerator FadeAwayAfterDelay()
     {
         yield return new WaitForSeconds(fadeDuration);
-
         Color originalColor = uiText.color;
 
         float alphaChangePerSecond = originalColor.a / fadeDuration;
 
+        //Adjust alpha component of text
         while (uiText.color.a > 0)
         {
             float newAlpha = uiText.color.a - alphaChangePerSecond * Time.deltaTime;

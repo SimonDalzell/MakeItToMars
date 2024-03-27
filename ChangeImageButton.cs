@@ -22,7 +22,7 @@ public class ChangeImageButton : MonoBehaviour
     {
         UpdateImageSprite();
     }
-
+    //Updates mute button to show that it has muted based on users choice
     private void UpdateImageSprite()
     {
         int isMuted = PlayerPrefs.GetInt("IsMuted", 0);

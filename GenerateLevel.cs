@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour
 {
+    //Unused anymore, used to create the freeplay level
     public GameObject MoveDownPrefab;
     public GameObject DownPrefab;
     public GameObject UpPrefab;

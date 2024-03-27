@@ -24,11 +24,12 @@ public class FreePlayDeath : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //if player is touching a wall and is not invincible, run the dead function
         if (collision.gameObject.CompareTag("Walls") && isInvincible == false)
         {
             Dead();
             Handheld.Vibrate();
-            Debug.Log("Dead" + isInvincible);
+            //Debug.Log("Dead" + isInvincible);
         }
     }
 
@@ -54,6 +55,7 @@ public class FreePlayDeath : MonoBehaviour
 
     IEnumerator WaitAndExecute()
     {
+        //Wait 2 seconds to return to non-invincible mode
         isWaitAndExecuteRunning = true;
         yield return new WaitForSeconds(2f);
         isInvincible = false;
@@ -108,11 +110,12 @@ public class FreePlayDeath : MonoBehaviour
 
     IEnumerator FlashAlpha()
     {
+        //Flash function to vary the alpha component of the player
         isFlashing = true;
 
         int flashes = 5;
-        float duration = 2.0f; // Total duration for the entire flashing sequence
-        float flashDuration = duration / flashes; // Duration for one flash
+        float duration = 2.0f; 
+        float flashDuration = duration / flashes; 
         float startTime = Time.time;
 
         while (Time.time - startTime < duration)

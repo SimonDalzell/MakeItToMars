@@ -28,7 +28,6 @@ public class LevelSelector : MonoBehaviour
                     PlayerPrefs.SetInt("Attempts", 0);
 
 
-        //Time.timeScale = 1f; 
     }
     public void LevelThree()
     {
@@ -37,110 +36,75 @@ public class LevelSelector : MonoBehaviour
                     PlayerPrefs.SetInt("Attempts", 0);
 
 
-        //Time.timeScale = 1f; 
     }
     public void LevelFour()
     {
         SceneManager.LoadScene("Level4");
         PlayerPrefs.SetInt("CurrentLevel", 4);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelFive()
     {
         SceneManager.LoadScene("Level5");
         PlayerPrefs.SetInt("CurrentLevel", 5);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelSix()
     {
         SceneManager.LoadScene("Level6");
         PlayerPrefs.SetInt("CurrentLevel", 6);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelSeven()
     {
         SceneManager.LoadScene("Level7");
         PlayerPrefs.SetInt("CurrentLevel", 7);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelEight()
     {
         SceneManager.LoadScene("Level8");
         PlayerPrefs.SetInt("CurrentLevel", 8);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelNine()
     {
         SceneManager.LoadScene("Level9");
         PlayerPrefs.SetInt("CurrentLevel", 9);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelTen()
     {
         SceneManager.LoadScene("Level10");
         PlayerPrefs.SetInt("CurrentLevel", 10);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelEleven()
     {
         SceneManager.LoadScene("Level11");
         PlayerPrefs.SetInt("CurrentLevel",11);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelTwelve()
     {
         SceneManager.LoadScene("Level12");
         PlayerPrefs.SetInt("CurrentLevel", 12);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelThirteen()
     {
         SceneManager.LoadScene("Level13");
         PlayerPrefs.SetInt("CurrentLevel", 13);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void LevelFourteen()
     {
         SceneManager.LoadScene("Level14");
         PlayerPrefs.SetInt("CurrentLevel", 14);
         PlayerPrefs.SetInt("Attempts", 0);
-
-
-        //Time.timeScale = 1f; 
     }
     public void MainMenu()
     {
-        //Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
     public void NextLevel()
@@ -166,14 +130,9 @@ public class LevelSelector : MonoBehaviour
     public void endScene()
     {
         SceneManager.LoadScene("Finish");
-      //  PlayerPrefs.SetInt("CurrentLevel", 1);
-        //PlayerPrefs.SetInt("Attempts", 0);
-
-
     }
     public void Update()
     {
-        //PlayerPrefs.SetInt("CurrentLevel", 1); // Save the new current level       
     }
     public void Freeplay()
     {

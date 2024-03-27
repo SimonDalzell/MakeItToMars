@@ -45,7 +45,6 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(freePlayDeath.IsDead());
         int CurrentLevel = PlayerPrefs.GetInt("CurrentLevel");
         float currentHeight = transform.position.y;
         if (currentHeight > finishHeight)
@@ -60,18 +59,15 @@ public class Movement : MonoBehaviour
             if (!PlayerPrefs.HasKey(bestTimeKey))
             {
                 PlayerPrefs.SetFloat(bestTimeKey, timeKeeper.CurrentTime);
-               // Debug.Log("New Best Time");
             }
             else
             {
                 if (PlayerPrefs.GetFloat(finishTimeKey) < PlayerPrefs.GetFloat(bestTimeKey))
                 {
                     PlayerPrefs.SetFloat(bestTimeKey, PlayerPrefs.GetFloat(finishTimeKey));
-                  //  Debug.Log("New Best Time");
                 }
             }
             
-            //stats.CheckStats();
             ToggleFinished();
         }
         Score.text = "Progress: " + currentHeight.ToString("0") + "%";
@@ -151,7 +147,6 @@ public class Movement : MonoBehaviour
     {
         Time.timeScale = 0f;
         HidePauseMenu();
-        //HideCanvas();
         finishMenu.SetActive(true);
         blurScreen.SetActive(true);
         PlayerPrefs.SetInt("Attempts", 1);

@@ -17,6 +17,7 @@ public class CheckPlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Walls"))
         {
+            //If user touches walls, increase attempt number, reload the scene, vibrate phone
             attempts = PlayerPrefs.GetInt("Attempts", 1) + 1;
             PlayerPrefs.SetInt("Attempts", attempts);
             PlayerPrefs.Save();
