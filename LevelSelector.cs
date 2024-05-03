@@ -122,7 +122,7 @@ public class LevelSelector : MonoBehaviour
         if (currentLevel > 14)
         {
             currentLevel=1;
-            Debug.Log(currentLevel);
+            //Debug.Log(currentLevel);
         }
         SceneManager.LoadScene("Level" + currentLevel); 
 

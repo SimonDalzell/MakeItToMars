@@ -13,6 +13,7 @@ public class CollectCoin : MonoBehaviour
     public int level;
     public AudioClip coinSound;
     private AudioSource audioSource;
+    public bool hasTouchedCoin = false;
 
     private void Start()
     {
@@ -21,18 +22,23 @@ public class CollectCoin : MonoBehaviour
 
     void Update()
     {
+        if (hasTouchedCoin == true)
+        {
+            return;
+        }
 
         int collectedCoinCount = PlayerPrefs.GetInt("CollectedCoinCount" + level, 0);
-        Debug.Log(collectedCoinCount);
+        //Debug.Log(collectedCoinCount);
         //Check if the objects are touching based on distance
         if (AreObjectsTouching(object1.transform, object2.transform, touchDistanceThreshold))
         {
-
             //Remove the coin from the scene when they touch
             object1.SetActive(false);
             collectedCoinCount++;
             PlayerPrefs.SetInt("CollectedCoinCount" + level, collectedCoinCount);
             audioSource.PlayOneShot(coinSound);
+
+            hasTouchedCoin = true;
         }
     }
 

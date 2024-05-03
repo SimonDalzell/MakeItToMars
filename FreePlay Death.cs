@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FreePlayDeath : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class FreePlayDeath : MonoBehaviour
     private SpriteRenderer playerSprite;
     private bool isFlashing = false;
 
+    [SerializeField]
+    Text Countdowntext;
+
     void Start()
     {
         playerSprite = GetComponent<SpriteRenderer>();
@@ -31,6 +35,32 @@ public class FreePlayDeath : MonoBehaviour
             Handheld.Vibrate();
             //Debug.Log("Dead" + isInvincible);
         }
+    }
+
+    public void StartCountdown()
+    {
+        StartCoroutine(CountdownCoroutine());
+    }
+
+    IEnumerator CountdownCoroutine()
+    {
+        Time.timeScale = 0f;
+        Debug.Log("Time Off");
+        Countdowntext.text = "3";
+        yield return new WaitForSecondsRealtime(1f);
+
+        Countdowntext.text = "2";
+        yield return new WaitForSecondsRealtime(1f);
+
+        Countdowntext.text = "1";
+        yield return new WaitForSecondsRealtime(1f);
+
+        Countdowntext.text = "";
+
+        Time.timeScale = 1f;
+        Debug.Log("Time On");
+        StartFlashing();
+        yield return null;
     }
 
     public bool IsDead()
@@ -89,13 +119,11 @@ public class FreePlayDeath : MonoBehaviour
     public void Continue()
     {
         isInvincible = true;
-
         DeathMenu.SetActive(false);
         blurScreen.SetActive(false);
         canvas.SetActive(true);
-        Time.timeScale = 1f;
         isDead = false;
-        StartFlashing();
+        //StartFlashing();
     }
 
 
@@ -103,6 +131,8 @@ public class FreePlayDeath : MonoBehaviour
     {
         if (!isFlashing)
         {
+            SetSpriteAlpha(1f);
+
             StartCoroutine(FlashAlpha());
             Debug.Log("Flashing started");
         }

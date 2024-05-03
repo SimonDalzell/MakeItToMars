@@ -32,7 +32,7 @@ public class TimeKeeper : MonoBehaviour
 
     private void StartTimer()
     {
-        // Set the start time to the current time
+        //Set the start time to the current time
         startTime = Time.time;
         isTimerRunning = true;
     }

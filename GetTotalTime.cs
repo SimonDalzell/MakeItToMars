@@ -23,7 +23,7 @@ public class GetTotalTime : MonoBehaviour
     }
 
     public void GetFinished()
-    {
+    {//gets all best times for each level
         bool finished = false;
         float bt1 = PlayerPrefs.GetFloat("BestTimeLevel1");
         float bt2 = PlayerPrefs.GetFloat("BestTimeLevel2");
@@ -39,17 +39,18 @@ public class GetTotalTime : MonoBehaviour
         float bt12 = PlayerPrefs.GetFloat("BestTimeLevel12");
         float bt13 = PlayerPrefs.GetFloat("BestTimeLevel13");
         float bt14 = PlayerPrefs.GetFloat("BestTimeLevel14");
+        
 
         float[] totalTime = { bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt10, bt11, bt12, bt13, bt14 };
-
-        foreach (float i in totalTime)
+        
+        foreach (float i in totalTime)//ensures all levels have been completed
         {
             if (i <= 0)
             {
                 finished = false;
             }
             else if (i > 0)
-            {
+            { 
                 finished = true;
             }
         }
@@ -65,7 +66,7 @@ public class GetTotalTime : MonoBehaviour
     }
 
     public void GetAllTimes()
-    {
+    {//calculates the total time spent in game
         float allTime = 0;
         for (int i = 0; i < 14; i++)
         {

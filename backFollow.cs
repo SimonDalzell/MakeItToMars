@@ -19,6 +19,7 @@ public class backFollow : MonoBehaviour
     {
         if (playerTransform != null)
         {
+            //Move background position based on the users position
             float parallaxX = (playerTransform.position.x - initialPosition.x) * parallaxFactor;
             float parallaxY = (playerTransform.position.y - initialPosition.y) * parallaxFactor;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public float newSize = 5f;
-
+    //Unused script
     void Start()
     {
         if (PlayerPrefs.HasKey("CameraSize"))

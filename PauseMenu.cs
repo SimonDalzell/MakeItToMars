@@ -86,8 +86,6 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = !isPaused;
         isBlurred = !isBlurred;
-
-        //Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         blurScreen.SetActive(false);
         canvas.SetActive(true);
